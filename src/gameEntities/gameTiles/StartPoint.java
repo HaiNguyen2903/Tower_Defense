@@ -1,4 +1,4 @@
-package GameEntities.GameTiles;
+package gameEntities.gameTiles;
 
 public class StartPoint extends Road
 {

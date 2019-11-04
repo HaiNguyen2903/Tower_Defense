@@ -1,2 +1,2 @@
 # Tower_Defense
-GameEntities.Towers.Tower Defense Project
+gameEntities.towers.Tower Defense Project

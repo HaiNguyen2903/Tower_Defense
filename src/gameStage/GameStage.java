@@ -1,4 +1,4 @@
-package Game_Stage;
+package gameStage;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -9,9 +9,10 @@ public class GameStage extends Application
     {
         launch(args);
     }
-    public void start(Stage stage)
+    public void start(Stage primaryStage) throws Exception
     {
-        stage.setTitle("Tower Defense");
-        stage.show();
+        primaryStage.setTitle("Tower Defense");
+
+        GameField.showMenu(primaryStage);
     }
 }

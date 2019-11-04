@@ -2,29 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ecc05ab6-fb65-475f-bd78-97f10e0a69c8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GameEntities/Enemies/BossEnemy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GameEntities/Enemies/Enemy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GameEntities/Enemies/NormalEnemy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GameEntities/Enemies/SmallerEnemy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GameEntities/Enemies/TankerEnemy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GameEntities/Towers/MachineGunTower.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GameEntities/Towers/NormalTower.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GameEntities/Towers/SniperTower.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GameEntities/Towers/Tower.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/gameStage/GameField.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Bullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameEntities/Bullet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EndPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameEntities/GameTiles/EndPoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Enemy.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game_Stage/GameField.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameStage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game_Stage/GameStage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameEntities/GameTiles/GameTile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mountain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameEntities/GameTiles/Mountain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Road.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameEntities/GameTiles/Road.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StartPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameEntities/GameTiles/StartPoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Tower.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameEntities/Bullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameEntities/Bullet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameEntities/Enemies/BossEnemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameEntities/enemies/BossEnemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameEntities/Enemies/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameEntities/enemies/Enemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameEntities/Enemies/NormalEnemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameEntities/enemies/NormalEnemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameEntities/Enemies/SmallerEnemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameEntities/enemies/SmallerEnemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameEntities/Enemies/TankerEnemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameEntities/enemies/TankerEnemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameEntities/GameTiles/EndPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameEntities/gameTiles/EndPoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameEntities/GameTiles/GameTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameEntities/gameTiles/GameTile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameEntities/GameTiles/Mountain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameEntities/gameTiles/Mountain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameEntities/GameTiles/Road.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameEntities/gameTiles/Road.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameEntities/GameTiles/StartPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameEntities/gameTiles/StartPoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameEntities/Towers/MachineGunTower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameEntities/towers/MachineGunTower.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameEntities/Towers/NormalTower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameEntities/towers/NormalTower.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameEntities/Towers/SniperTower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameEntities/towers/SniperTower.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameEntities/Towers/Tower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameEntities/towers/Tower.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game_Stage/GameField.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game_Stage/GameStage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameStage/GameStage.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,6 +47,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -65,7 +63,7 @@
   </component>
   <component name="RunManager">
     <configuration name="Tower_Defense" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="Game_Stage.GameStage" />
+      <option name="MAIN_CLASS_NAME" value="gameStage.GameStage" />
       <module name="Tower_Defense" />
       <method v="2">
         <option name="Make" enabled="true" />
