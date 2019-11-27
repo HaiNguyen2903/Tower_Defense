@@ -1,5 +1,5 @@
-package gameEntities.gameTiles;
-
-public class StartPoint extends Road
-{
-}
+//package gameEntities.gameTiles;
+//
+//public class StartPoint extends Road
+//{
+//}
