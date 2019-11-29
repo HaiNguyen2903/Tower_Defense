@@ -1,34 +1,28 @@
 package gameEntities.towers;
 
 import game.GameField;
-import gameEntities.enemies.Enemy;
 import javafx.scene.paint.Color;
-import sun.plugin.com.event.COMEventListener;
+import javafx.scene.shape.Circle;
 
-import java.util.ArrayList;
-
-public class NormalTower extends Tower
-{
-    public NormalTower()
-    {
-        tower = GameField.split(GameField.image_base, 10, 19);
-        posX = 7*64;
-        posY = 8*64;
-        range = 300;
-        angle = 0;
-        bullet = new Bullet(this);
-        circleRange.setFill(Color.BLACK);
-        circleRange.setCenterX(posX);
-        circleRange.setCenterY(posY);
-        circleRange.setRadius(range);
-        circleRange.setStroke(Color.BLACK);
+public class NormalTower extends Tower {
+    public NormalTower(int x, int y) {
+        super(x, y);
+        towerImage = GameField.split(baseImage, 10, 19);
+        towerView.setImage(towerImage);
+        buyingCost = newBuyingCost;
+        sellingCost = newSellingCost;
+        range = newRange;
+        power = newPower;
+        rotationSpeed = newRotationSpeed;
+        rangeCircle = new Circle(x + towerImage.getWidth() / 2, y + towerImage.getHeight() / 2, range, Color.rgb(0, 0, 0, 0));
+        rangeCircle.setStroke(Color.GREEN);
+        rangeCircle.setStrokeWidth(3);
+        bullet = new NormalBullet(this);
     }
 
-    @Override
-    public void add(ArrayList<Tower> towerList)
-    {
-        NormalTower normalTower = new NormalTower();
-        towerList.add(normalTower);
-    }
-
+    private static int newBuyingCost = 100;
+    private static int newSellingCost = 60;
+    private static double newRange = 200;
+    private static double newPower = 0.6;
+    private static double newRotationSpeed = 3;
 }

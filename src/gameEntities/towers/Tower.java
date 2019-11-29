@@ -1,161 +1,130 @@
 package gameEntities.towers;
 
-import com.sun.scenario.effect.impl.BufferUtil;
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
-import game.GameField;
 import gameEntities.enemies.Enemy;
-import javafx.scene.Group;
-import javafx.scene.canvas.GraphicsContext;
+import gameEntities.enemies.Troop;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
-import javafx.scene.transform.Rotate;
-import org.omg.IOP.ENCODING_CDR_ENCAPS;
 
-import java.util.ArrayList;
-import java.util.Queue;
-
-public abstract class Tower
-{
-    protected Enemy target;
-    protected double angle;
+public abstract class Tower {
+    protected Image baseImage = new Image("file:resources/images/base.png");
+    protected Image towerImage;
+    protected ImageView towerView = new ImageView();
+    protected int buyingCost;
+    protected int sellingCost;
+    protected int x;
+    protected int y;
     protected double range;
-    protected double shootingSpeed;
-    protected double posX;
-    protected double posY;
-    protected Circle circleRange = new Circle();
-    protected Image tower;
+    protected double power;
+    protected double angle = 0;
+    protected double rotationSpeed;
+    protected Enemy target;
+    protected double targetAngle;
+    protected Circle rangeCircle;
     protected Bullet bullet;
 
-    public double getPosX() {
-        return this.posX;
+    public Tower(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
 
-    public void setPosX(double posX) {
-        this.posX = posX;
+    public void setCoordinate() {
+        towerView.setX(x);
+        towerView.setY(y);
     }
 
-    public double getPosY() {
-        return this.posY;
+    public boolean inRange(Enemy enemy) {
+        return Math.sqrt((x - enemy.getX()) * (x - enemy.getX()) + (y - enemy.getY()) * (y - enemy.getY())) <= this.range;
     }
 
-    public void setPosY(double posY) {
-        this.posY = posY;
-    }
-
-    public double getRange()
-    {
-        return range;
-    }
-
-    public void setRange(double range)
-    {
-        this.range = range;
-    }
-
-    public abstract void add(ArrayList<Tower> towerList);
-
-    public void rotate(GraphicsContext gc, double angle, double px, double py) {
-        Rotate r = new Rotate(angle, px, py);
-        gc.setTransform(r.getMxx(), r.getMyx(), r.getMxy(), r.getMyy(), r.getTx(), r.getTy()); // NO GC SCALE
-        gc.setTransform(r.getMxx()*GameField.scaleX, r.getMyx()*GameField.scaleX,
-                r.getMxy()*GameField.scaleX, r.getMyy()*GameField.scaleY,
-                r.getTx()*GameField.scaleY, r.getTy()*GameField.scaleY);
-    }
-
-    public void drawRotatedImage(GraphicsContext gc, Image image, double angle, double tlpx, double tlpy) {
-        gc.save(); // saves the current state on stack, including the current transform
-        rotate(gc, angle, tlpx + image.getWidth() / 2, tlpy + image.getHeight() / 2);
-        gc.drawImage(image, tlpx, tlpy);
-        gc.restore(); // back to original state (before rotation)
-    }
-
-    public void drawRange(Group root)
-    {
-        root.getChildren().add(circleRange);
-    }
-
-    public boolean checkInRange(double enemyX, double enemyY)
-    {
-        return Math.sqrt((posX - enemyX) * (posX - enemyX) + (posY - enemyY) * (posY - enemyY)) < this.range;
-    }
-
-
-    public Enemy findTarget(ArrayList<Enemy> movingEnemies)
-    {
-        if (movingEnemies.size() != 0)
-        {
-            target = GameField.movingEnemies.get(0);
-            if (checkInRange(target.getCurrentX(), target.getCurrentY()) == true)
-            {
-                return target;
-            }
-            if (checkInRange(target.getCurrentX(), target.getCurrentY()) == false)
-                {
-                for (int i = 1; i < movingEnemies.size(); i++)
-                {
-                   // if (target.getDistance() < movingEnemies.get(i).getDistance())
-                    if (checkInRange(movingEnemies.get(i).getCurrentX(), movingEnemies.get(i).getCurrentY()))
-                    {
-                        target = movingEnemies.get(i);
-                        return target;
-                    }
-                }
-            //    return target;
-            }
-        }
-        return target;
-    }
-
-    public void draw(GraphicsContext gc, Group root)
-    {
-  //      drawRange(root);
-        bullet.draw(gc);
-        drawRotatedImage(gc, tower, angle, posX, posY);
-    }
-
-    public void update(ArrayList<Enemy> movingEnemies, GraphicsContext gc)
-    {
-        if (movingEnemies.size() != 0)
-        {
-            target = findTarget(movingEnemies);
-            double enemyX =  target.getCurrentX();
-            double enemyY =  target.getCurrentY();
-            if (enemyX > 0)
-            {
-                if (checkInRange(enemyX, enemyY))
-                {
-                    bullet.shoot(this, target);
-                    double dx = Math.abs(enemyX - this.posX);
-                    double dy = Math.abs(enemyY - this.posY);
-                    double alpha = Math.atan2(dy, dx) * 180 / Math.PI;
-
-                    if (this.posX <= enemyX)
-                    {
-                        if (this.posY > enemyY)
-                        {
-                            angle =  -(alpha + 90) + 180;
-                        }
-                        if (this.posY < enemyY)
-                        {
-                            angle =  -(90 - alpha) + 180;
-                        }
-                    }
-                    if (this.posX > enemyX)
-                    {
-                        if (this.posY > enemyY)
-                        {
-                            angle = (90 + alpha) + 180;
-                        }
-                        if (this.posY < enemyY)
-                        {
-                            angle = (90 - alpha) + 180;
-                        }
+    public boolean foundTarget(Troop troop) {
+        if (troop.getTroop().size() != 0) {
+            target = troop.getTroop().get(0);
+            if (inRange(target)) {
+                double dx = target.getX() - x;
+                double dy = target.getY() - y;
+                targetAngle = (Math.atan2(dy, dx) + Math.PI / 2) / Math.PI * 180;
+                if (targetAngle > 180) targetAngle = targetAngle - 360;
+                if (targetAngle < -180) targetAngle = targetAngle + 360;
+                return true;
+            } else {
+                for (int i = 1; i < troop.getTroop().size(); i++) {
+                    if (inRange(troop.getTroop().get(i))) {
+                        target = troop.getTroop().get(i);
+                        double dx = target.getX() - x;
+                        double dy = target.getY() - y;
+                        targetAngle = (Math.atan2(dy, dx) + Math.PI / 2) / Math.PI * 180;
+                        if (targetAngle > 180) targetAngle = targetAngle - 360;
+                        if (targetAngle < -180) targetAngle = targetAngle + 360;
+                        return true;
                     }
                 }
             }
-        //    System.out.print(enemyX + "\t" + enemyY + "\t\t" + posX + "\t" + posY + "\t" + angle + "\n");
+            return false;
         }
+        return false;
+    }
+
+    public void followEnemy(Troop troop, AnchorPane root) {
+        bullet.move(this, target, troop, root);
+        if (attackable()) {
+            if (bullet.isMoving)
+                bullet.move(this, target, troop, root);
+        } else {
+            if (angle == 0) {
+                if (targetAngle < 0)
+                    angle -= rotationSpeed;
+                else angle += rotationSpeed;
+            }
+            // targetAngle and current angle have the same sign
+            else if (targetAngle * angle > 0) {
+                if (targetAngle > angle) angle += rotationSpeed;
+                else angle -= rotationSpeed;
+            } else if (targetAngle * angle < 0) {
+                if (angle > 0) {
+                    if (angle + Math.abs(targetAngle) > 180)
+                        angle += rotationSpeed;
+                    else angle -= rotationSpeed;
+                } else {
+                    if (Math.abs(angle) + targetAngle > 180)
+                        angle -= rotationSpeed;
+                    else angle += rotationSpeed;
+                }
+            }
+            if (angle > 180) angle = angle - 360;
+            if (angle < -180) angle = angle + 360;
+            towerView.setRotate(angle);
+        }
+    }
+
+    public void returnNormal () {
+        bullet.setCoordinate(-64, -64);
+        bullet.setX(x);
+        bullet.setY(y);
+
+        if (angle > 0) angle -= rotationSpeed;
+        else if (angle < 0) angle += rotationSpeed;
+
+        if (angle > 180) angle = angle - 360;
+        if (angle < -180) angle = angle + 360;
+        towerView.setRotate(angle);
+    }
+
+
+    public boolean attackable() {
+        return Math.abs(targetAngle - angle) < 1;
+    }
+
+    public ImageView getTowerView() {
+        return towerView;
+    }
+
+    public Circle getRangeCircle() {
+        return rangeCircle;
+    }
+
+    public Bullet getBullet() {
+        return bullet;
     }
 }

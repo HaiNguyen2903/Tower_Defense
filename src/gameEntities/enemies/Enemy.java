@@ -1,181 +1,138 @@
 package gameEntities.enemies;
 
 import game.GameField;
-import gameEntities.gameTiles.EndPoint;
-import javafx.scene.Group;
-import javafx.scene.canvas.GraphicsContext;
+import game.Point;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.transform.Rotate;
-import player.Player;
+import javafx.scene.shape.Rectangle;
 
-import java.util.*;
-
-public abstract class Enemy
-{
-    protected String direction;
+public abstract class Enemy {
+    //Unit infos//
+    protected Image baseImage = new Image("file:resources/images/base.png");
+    protected Image enemyImage;
+    protected ImageView enemyView = new ImageView();
+    protected double x;
+    protected double y;
+    protected Direction direction;
     protected double blood;
+    protected double leftBlood;
     protected double speed;
-    protected double distance;
-    protected double currentX;
-    protected double currentY;
-    protected int number;
-    protected Image enemy;
-    protected Queue<Enemy> movingEnemies = new LinkedList<>();
+    protected Rectangle leftBloodBar;
+    public boolean newTarget = true;
 
-    public double getCurrentX()
-    {
-        return this.currentX;
-    }
-    public void setCurrentX(double currentX)
-    {
-        this.currentX = currentX;
+    public void setCoordinate() {
+        enemyView.setX(x);
+        enemyView.setY(y);
     }
 
-    public double getCurrentY()
-    {
-        return this.currentY;
-    }
-    public void setCurrentY(double currentY)
-    {
-        this.currentY = currentY;
+    public void rotate(double angle) {
+        enemyView.setRotate(angle);
     }
 
-    public int getNumber()
-    {
-        return this.number;
-    }
-    public void setNumber(int number)
-    {
-        this.number = number;
+    public static final Point[] wayPoints = new Point[]{
+            new Point(4 * 64 - 32, 4 * 64 - 32),
+            new Point(4 * 64 - 32, 10 * 64 - 32),
+            new Point(9 * 64 - 32, 10 * 64 - 32),
+            new Point(9 * 64 - 32, 4 * 64 - 32),
+            new Point(15 * 64 - 32, 4 * 64 - 32),
+            new Point(15 * 64 - 32, 10 * 64 - 32),
+            new Point(22 * 64 - 32, 10 * 64 - 32)
+    };
+
+    protected int wayPointIndex = 0;
+
+    public Point getNextWayPoint() {
+        if (wayPointIndex < wayPoints.length - 1)
+            return wayPoints[++wayPointIndex];
+        return null;
     }
 
-    public double getSpeed()
-    {
-        return this.speed;
-    }
-    public void setSpeed(double speed)
-    {
-        this.speed = speed;
-    }
-
-    public Queue<Enemy> getMovingEnemies()
-    {
-        return this.movingEnemies;
-    }
-    public void setMovingEnemies(Queue<Enemy> movingEnemies)
-    {
-        this.movingEnemies = movingEnemies;
-    }
-
-    public double getDistance()
-    {
-        return this.distance;
-    }
-    public void setDistance(double distance)
-    {
-        this.distance = distance;
-    }
-
-    private void rotate(GraphicsContext gc, double angle, double px, double py)
-    {
-        Rotate r = new Rotate(angle, px, py);
-        gc.setTransform(r.getMxx(), r.getMyx(), r.getMxy(), r.getMyy(), r.getTx(), r.getTy()); // NO GC SCALE
-        gc.setTransform(r.getMxx()*GameField.scaleX, r.getMyx()*GameField.scaleX,
-                r.getMxy()*GameField.scaleX, r.getMyy()*GameField.scaleY,
-                r.getTx()*GameField.scaleY, r.getTy()*GameField.scaleY);
-    }
-
-    private void drawRotatedImage(GraphicsContext gc, Image image, double angle, double tlpx, double tlpy)
-    {
-        gc.save(); // saves the current state on stack, including the current transform
-        rotate(gc, angle, tlpx + image.getWidth()/2, tlpy + image.getHeight()/2);
-        gc.drawImage(image, tlpx, tlpy);
-        gc.restore(); // back to original state (before rotation)
-    }
-
-    public void draw(GraphicsContext gc)
-    {
-        switch (direction)
-        {
-            case "GO_RIGHT":
-                gc.drawImage(enemy,currentX, currentY);
-                break;
-            case "GO_LEFT":
-                drawRotatedImage(gc, enemy, 180, currentX, currentY);
-                break;
-            case "GO_DOWN":
-                drawRotatedImage(gc, enemy, 90, currentX, currentY);
-                break;
-            case "GO_UP":
-                drawRotatedImage(gc, enemy, -90, currentX, currentY);
-                break;
+    public void checkDirection() {
+        if (wayPointIndex >= wayPoints.length) {
+            return;
         }
-    }
-
-    public void checkDirection(int[][] map)
-    {
-        if (currentY >= 64 && currentX >= 64)
-        {
-            switch (direction)
-            {
-                case "GO_RIGHT":
-                    if (map[Math.round((float) ((currentY + 32) / 64 - 1))][Math.round((float) ((currentX) / 64))] == 4)
-                    {
-                        direction = "GO_DOWN";
-                        break;
-                    }
-                    if (map[Math.round((float) ((currentY + 32) / 64))][Math.round((float) ((currentX) / 64))] == 9)
-                    {
-                        direction = "GO_UP";
-                        break;
-                    }
-                case "GO_DOWN":
-                    if (map[Math.round((float) ((currentY) / 64))][Math.round((float) ((currentX+32) / 64 - 1))] == 8)
-                    {
-                        direction = "GO_RIGHT";
-                        break;
-                    }
-                case "GO_UP":
-                    if (map[Math.round((float) ((currentY + 64) / 64 - 1))][Math.round((float) ((currentX) / 64 - 1))] == 3)
-                    {
-                        direction = "GO_RIGHT";
-                        break;
-                    }
+        Point currentWP = wayPoints[wayPointIndex];
+        if (GameField.distance(x, y, currentWP.x, currentWP.y) < speed) {
+            Point nextWayPoint = getNextWayPoint();
+            if (nextWayPoint == null) return;
+            double deltaX = nextWayPoint.x - x;
+            double deltaY = nextWayPoint.y - y;
+            if (deltaX > speed) {
+                direction = Direction.RIGHT;
+            } else if (deltaX < -speed) {
+                direction = Direction.LEFT;
+            } else if (deltaY > speed) {
+                direction = Direction.DOWN;
+            } else if (deltaY <= -speed) {
+                direction = Direction.UP;
             }
         }
-
     }
 
-    public void update(int[][] map)
-    {
-        checkDirection(map);
-        if (direction == "GO_RIGHT")
-        {
-            currentX += speed;
-        }
-        if (direction == "GO_DOWN")
-        {
-            currentY += speed;
-        }
-        if (direction == "GO_UP")
-        {
-            currentY -= speed;
-        }
-        distance += speed;
-    }
-
-    public void checkExist(ArrayList<Enemy> movingEnemies, EndPoint endPoint, Player player)
-    {
-        for (int i = 0; i < movingEnemies.size(); i++)
-        {
-            if (movingEnemies.get(i).currentX >= endPoint.getEndX())
-            {
-                player.setCurrentHP(player.getCurrentHP()-1);
-                System.out.println("PLAYER HP: " + player.getCurrentHP());
-                movingEnemies.remove(i);
+    public void update() {
+        checkDirection();
+        switch (direction) {
+            case UP:
+                y -= speed;
+                setCoordinate();
+                leftBloodBar.setX(x);
+                leftBloodBar.setY(y - 16);
+                rotate(-90);
                 break;
-            }
+            case DOWN:
+                y += speed;
+                setCoordinate();
+                leftBloodBar.setX(x);
+                leftBloodBar.setY(y - 16);
+                rotate(90);
+                break;
+            case LEFT:
+                x -= speed;
+                setCoordinate();
+                leftBloodBar.setX(x);
+                leftBloodBar.setY(y - 16);
+                rotate(180);
+                break;
+            case RIGHT:
+                x += speed;
+                setCoordinate();
+                leftBloodBar.setX(x);
+                leftBloodBar.setY(y - 16);
+                rotate(0);
+                break;
         }
+    }
+
+    public ImageView getEnemyView() {
+        return enemyView;
+    }
+    public double getX() { return x; }
+    public double getY() { return y; }
+    public double getBlood() {
+        return blood;
+    }
+    public double getLeftBlood() {
+        return leftBlood;
+    }
+    public Rectangle getLeftBloodBar() {
+        return leftBloodBar;
+    }
+    public boolean isNewTarget() {
+        return newTarget;
+    }
+    public void setX(double x) {
+        this.x = x;
+    }
+    public void setY(double y) {
+        this.y = y;
+    }
+    public void setBlood(double blood) {
+        this.blood = blood;
+    }
+    public void setLeftBlood(double leftBlood) {
+        this.leftBlood = leftBlood;
+    }
+    public void setNewTarget(boolean newTarget) {
+        this.newTarget = newTarget;
     }
 }

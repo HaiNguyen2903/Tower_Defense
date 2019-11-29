@@ -1,90 +1,75 @@
 package gameEntities.towers;
 
 import com.sun.javafx.geom.Vec2d;
-import game.GameField;
 import gameEntities.enemies.Enemy;
-import javafx.scene.canvas.GraphicsContext;
+import gameEntities.enemies.Troop;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 
-import java.awt.geom.Point2D;
-import java.util.ArrayList;
+public abstract class Bullet {
+    protected Image baseImage = new Image("file:resources/images/base.png");
+    protected Image bulletImage;
+    protected ImageView bulletView = new ImageView();
+    protected double moveSpeed;
+    protected double x;
+    protected double y;
+    protected double vecX;
+    protected double vecY;
+    protected int damage;
+    protected boolean isMoving;
 
-public class Bullet
-{
-    protected Image bullet;
-    protected double speed;
-    protected double damage;
-    protected double vX;
-    protected double vY;
-    protected double posX;
-    protected double posY;
-
-    public Bullet(Tower tower)
-    {
-        bullet = GameField.split(GameField.image_base, 11, 19);
-        speed = 10;
-        damage = 10;
-        this.posX = tower.getPosX();
-        this.posY = tower.getPosY();
+    public void setCoordinate(double x, double y) {
+        bulletView.setX(x);
+        bulletView.setY(y);
     }
 
-    public double getPosX()
-    {
-        return this.posX;
-    }
+    public void move(Tower tower, Enemy target, Troop troop, AnchorPane root) {
 
-    public void setPosX(double posX)
-    {
-        this.posX = posX;
-    }
+        double d = Vec2d.distance(target.getX(), target.getY(), x, y);
+        double dx = target.getX() - x;
+        double dy = target.getY() - y;
 
-    public double getPosY()
-    {
-        return posY;
-    }
-
-    public void setPosY(double posY)
-    {
-        this.posY = posY;
-    }
-
-    public void draw(GraphicsContext gc)
-    {
-        gc.drawImage(bullet, this.posX, this.posY);
-    }
-
-    public double getDistance(Tower tower, Enemy enemy)
-    {
-        return Math.sqrt((tower.getPosX() - enemy.getCurrentX())*(tower.getPosX()- enemy.getCurrentX())
-                         +(tower.getPosY() - enemy.getCurrentY())*(tower.getPosY() - enemy.getCurrentY()));
-    }
-
-
-
-    public void shoot(Tower tower, Enemy target)
-    {
-        double d = Vec2d.distance(target.getCurrentX(), target.getCurrentY(), this.posX, this.posY); // giữa đạn và lính
-        double dx = target.getCurrentX() - this.posX;
-        double dy = target.getCurrentY() - this.posY;
-
-        speed = getDistance(tower, target)/100 + 2.5;
-
-        if (d < speed)
-        {
-            vX = dx;
-            vY = dy;
-            this.posX += vX;
-            this.posY += vY;
-            this.posX=tower.getPosX();
-            this.posY=tower.getPosY();
-
+        if (d < moveSpeed) {
+            vecX = dx;
+            vecY = dy;
+            x += vecX;
+            y += vecY;
+            target.setLeftBlood(target.getLeftBlood() - damage);
+            target.getLeftBloodBar().setWidth(64 * target.getLeftBlood() / target.getBlood());
+            if (target.getLeftBlood() <= 0) {
+                root.getChildren().remove(target.getEnemyView());
+                troop.getTroop().remove(target);
+                troop.setNumber(troop.getNumber()-1);
+            }
+            x = tower.x;
+            y = tower.y;
+        } else {
+            vecX = dx * moveSpeed / d;
+            vecY = dy * moveSpeed / d;
+            x += vecX;
+            y += vecY;
+            setCoordinate(x, y);
         }
-        else
-        {
-            vX = dx * this.speed / d;
-            vY = dy * this.speed / d;
-            this.posX += vX;
-            this.posY += vY;
-        }
+        if (x != tower.x && y != tower.y) isMoving = true;
+        else isMoving = false;
     }
+
+    public ImageView getBulletView() {
+        return bulletView;
+    }
+
+    public double getX() {
+        return x;
+    }
+    public double getY() {
+        return y;
+    }
+    public void setX(double x) {
+        this.x = x;
+    }
+    public void setY(double y) {
+        this.y = y;
+    }
+
 }

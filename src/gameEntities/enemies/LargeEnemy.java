@@ -4,9 +4,9 @@ import game.GameField;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-public class NormalEnemy extends Enemy {
-    public NormalEnemy() {
-        enemyImage = GameField.split(baseImage, 10, 15);
+public class LargeEnemy extends Enemy{
+    public LargeEnemy(){
+        enemyImage = GameField.split(baseImage, 10, 16);
         enemyView.setImage(enemyImage);
         x = -32;
         y = 7  * 64 / 2;
@@ -20,6 +20,6 @@ public class NormalEnemy extends Enemy {
         setCoordinate();
     }
 
-    private static double newBlood = 500;
-    private static double newSpeed = 4;
+    private static double newBlood = 1500;
+    private static double newSpeed = 2;
 }

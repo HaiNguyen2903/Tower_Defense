@@ -1,54 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ecc05ab6-fb65-475f-bd78-97f10e0a69c8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/game/GameField.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game/GameStage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game/Menu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game/PlayScreen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/gameEntities/towers/Bullet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/gameEntities/towers/CircleRange.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/player/Player.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/player/PlayerHP.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/GameEntities/Bullet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/GameEntities/Enemies/BossEnemy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/GameEntities/Enemies/BossEnemy.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/GameEntities/Enemies/Enemy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/GameEntities/Enemies/Enemy.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/GameEntities/Enemies/NormalEnemy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/GameEntities/Enemies/NormalEnemy.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/GameEntities/Enemies/SmallerEnemy.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/GameEntities/Enemies/TankerEnemy.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/GameEntities/GameTiles/EndPoint.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/GameEntities/GameTiles/EndPoint.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/GameEntities/GameTiles/GameTile.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/GameEntities/GameTiles/GameTile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/GameEntities/GameTiles/Mountain.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/GameEntities/GameTiles/Road.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/GameEntities/GameTiles/Road.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/GameEntities/GameTiles/StartPoint.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/GameEntities/Towers/MachineGunTower.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/GameEntities/Towers/NormalTower.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/GameEntities/Towers/NormalTower.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/GameEntities/Towers/SniperTower.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/GameEntities/Towers/Tower.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/GameEntities/Towers/Tower.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/gameStage/GameField.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/gameStage/GameStage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/map.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameEntities/Bullet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameEntities/enemies/BossEnemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameEntities/enemies/BossEnemy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameEntities/enemies/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameEntities/enemies/Enemy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameEntities/enemies/NormalEnemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameEntities/enemies/NormalEnemy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameEntities/enemies/SmallerEnemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameEntities/enemies/SmallerEnemy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameEntities/enemies/TankerEnemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameEntities/enemies/TankerEnemy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameEntities/gameTiles/EndPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameEntities/gameTiles/EndPoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameEntities/gameTiles/GameTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameEntities/gameTiles/GameTile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameEntities/gameTiles/Mountain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameEntities/gameTiles/Mountain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameEntities/gameTiles/Road.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameEntities/gameTiles/Road.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameEntities/gameTiles/StartPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameEntities/gameTiles/StartPoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameEntities/towers/MachineGunTower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameEntities/towers/MachineGunTower.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameEntities/towers/NormalTower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameEntities/towers/NormalTower.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameEntities/towers/SniperTower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameEntities/towers/SniperTower.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameEntities/towers/Tower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameEntities/towers/Tower.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameStage/GameField.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameStage/GameStage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/map.png" beforeDir="false" />
-    </list>
+    <list default="true" id="e8cc87ff-5447-459a-a57b-e386d34312b3" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,28 +11,23 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="ProjectId" id="1SCSrvoeg3u4UVWNl0fatMW0Fyy" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="1SaGlYZaV1npVoEtydjlN5qLlWK" />
   <component name="PropertiesComponent">
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/TestUpdate/Test" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.15" />
+    <property name="full.screen.before.presentation.mode" value="false" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Documents/GitHub/Tower_Defense" />
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="gameEntities.towers" />
-      <recent name="gameEntities" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Khanh\OOP\Main\src" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -95,8 +43,8 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="Tower_Defense" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="game.Main" />
+    <configuration name="GameStage" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="game.GameStage" />
       <module name="Tower_Defense" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -108,25 +56,12 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="ecc05ab6-fb65-475f-bd78-97f10e0a69c8" name="Default Changelist" comment="" />
-      <created>1571066287020</created>
+      <changelist id="e8cc87ff-5447-459a-a57b-e386d34312b3" name="Default Changelist" comment="" />
+      <created>1571794444881</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1571066287020</updated>
+      <updated>1571794444881</updated>
     </task>
     <servers />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
 </project>
