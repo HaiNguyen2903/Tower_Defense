@@ -1,5 +1,6 @@
 package gameEntities.enemies;
 
+<<<<<<< HEAD
 import game.GameField;
 import game.Point;
 import javafx.scene.image.Image;
@@ -135,4 +136,11 @@ public abstract class Enemy {
     public void setNewTarget(boolean newTarget) {
         this.newTarget = newTarget;
     }
+=======
+public interface Enemy
+{
+    public int blood = 0;
+    public int speed = 0;
+    public int armor = 0;
+>>>>>>> parent of ec382e8... update
 }

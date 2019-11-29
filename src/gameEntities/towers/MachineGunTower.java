@@ -1,5 +1,5 @@
-//package gameEntities.towers;
-//
-//public class MachineGunTower implements Tower
-//{
-//}
+package gameEntities.towers;
+
+public class MachineGunTower implements Tower
+{
+}

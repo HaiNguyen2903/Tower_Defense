@@ -1,5 +1,5 @@
-//package gameEntities.enemies;
-//
-//public class TankerEnemy extends Enemy
-//{
-//}
+package gameEntities.enemies;
+
+public class TankerEnemy implements Enemy
+{
+}
