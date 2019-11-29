@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b1cffd30-4c54-4c90-94ee-32e39af96212" name="Default Changelist" comment="" />
+    <list default="true" id="e8cc87ff-5447-459a-a57b-e386d34312b3" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -11,17 +11,24 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
   </component>
-  <component name="ProjectId" id="1RJ99o42ITGY016EdaVteUAHkhf" />
+  <component name="ProjectId" id="1SaGlYZaV1npVoEtydjlN5qLlWK" />
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/Tower_Defense-master" />
+    <property name="full.screen.before.presentation.mode" value="false" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Documents/GitHub/Tower_Defense" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Khanh\OOP\Main\src" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -36,29 +43,24 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="Main" />
+    <configuration name="GameStage" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="game.GameStage" />
+      <module name="Tower_Defense" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.Main" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="b1cffd30-4c54-4c90-94ee-32e39af96212" name="Default Changelist" comment="" />
-      <created>1569374182890</created>
+      <changelist id="e8cc87ff-5447-459a-a57b-e386d34312b3" name="Default Changelist" comment="" />
+      <created>1571794444881</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1569374182890</updated>
+      <updated>1571794444881</updated>
     </task>
     <servers />
   </component>
