@@ -1,6 +1,5 @@
 package gameEntities.towers;
 
-<<<<<<< HEAD
 import game.GameField;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -26,8 +25,4 @@ public class NormalTower extends Tower {
     private static double newRange = 200;
     private static double newPower = 0.6;
     private static double newRotationSpeed = 3;
-=======
-public class NormalTower implements Tower
-{
->>>>>>> parent of ec382e8... update
 }

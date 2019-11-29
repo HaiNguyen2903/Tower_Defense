@@ -1,6 +1,5 @@
 package gameEntities.enemies;
 
-<<<<<<< HEAD
 import game.GameField;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -20,10 +19,6 @@ public class NormalEnemy extends Enemy {
         leftBloodBar.setStroke(Color.WHITE);
         setCoordinate();
     }
-=======
-public class NormalEnemy implements Enemy
-{
->>>>>>> parent of ec382e8... update
 
     private static double newBlood = 500;
     private static double newSpeed = 4;

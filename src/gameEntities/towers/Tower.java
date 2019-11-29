@@ -1,6 +1,5 @@
 package gameEntities.towers;
 
-<<<<<<< HEAD
 import gameEntities.enemies.Enemy;
 import gameEntities.enemies.Troop;
 import javafx.scene.image.Image;
@@ -128,9 +127,4 @@ public abstract class Tower {
     public Bullet getBullet() {
         return bullet;
     }
-=======
-public interface Tower
-{
-
->>>>>>> parent of ec382e8... update
 }
